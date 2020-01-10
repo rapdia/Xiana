@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Xiana Raposo"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nivel del mar</title>
+</head>  
+    <style type="text/css">
+    #progreso{
+        margin-top: 10px;
+        margin-left: 20px;
+        width: 0m;
+    }
+    #barra{
+        width: 0;
+        height: 20px;
+        background-color: rgb(207, 39, 33);
+        text-align:center;
+        color:white;
+    }
+    #imaxe{
+        width: 790px;
+        height: 500px;
+    }
+    </style>
+    
+    <div id="progreso">
+    <h1>Sea Level</h1>
+    <h2>Northern Europe</h2>
+        <div id="imaxe"><img id="imaxe" src='imagenes/0.jpeg'></div>     
+        <div id="barra"><strong>0m</strong></div> 
+        <button onclick="nivel()">>></button> 
+    </div>
+
+    <script type="text/javascript">
+        var i=0;
+    function nivel() {
+        if(i==0){
+        i=1;
+            var bar = document.getElementById("barra");
+            var imx = document.getElementById ("imaxe");  
+            var ancho = 0;
+            var id = setInterval(mapa, 500);
+            function mapa() {
+                if (ancho >= 6) {
+                clearInterval(id);
+                i=0;
+                } else {
+                ancho= ancho+1; 
+                bar.style.width = ancho*7 + "%"; 
+                bar.innerHTML = ancho + "m"; 
+                imx.innerHTML= "<img id='imaxe' src="+ "'imagenes/" + ancho +".jpeg'>";
+                }
+            }
+        }
+    }
+    </script>
+</body>
+</html>
